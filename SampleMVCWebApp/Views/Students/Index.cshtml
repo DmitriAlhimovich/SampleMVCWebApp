@@ -1,0 +1,30 @@
+﻿@model StudentListModel
+@{
+    ViewData["Title"] = "Students";
+
+}
+<h1 class="display-4">List of Students</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>Start Date</td>
+        </tr>
+    </thead>
+    @foreach (var student in Model.Students)
+    {
+        <tr>
+            <td>@student.FirstName</td>
+            <td>@student.LastName</td>
+            <td>@student.StartDate</td>
+        </tr>
+    }
+
+    <tfoot>
+        <tr>
+            <td><strong>Total: @Model.Students.Count()</strong></td>
+        </tr>
+    </tfoot>
+</table>
