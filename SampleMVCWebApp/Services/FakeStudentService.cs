@@ -5,13 +5,11 @@ namespace SampleMVCWebApp.Services
 {
     public class FakeStudentService : IStudentService
     {
-        public IEnumerable<Student> GetAll()
-        {
-            return new List<Student>()
+        public IEnumerable<Student> GetAll() =>
+            new List<Student>
             {
-                new Student() {FirstName = "Ivan", LastName = "Petrov"},
-                new Student() {FirstName = "Oleg", LastName = "Antonov"}
+                new() {FirstName = "Ivan", LastName = "Petrov"},
+                new() {FirstName = "Oleg", LastName = "Antonov"}
             };
-        }
     }
 }
