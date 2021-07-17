@@ -1,2 +1,2 @@
 # SampleMVCWebApp
-MVC with Razor Sample
+Sample of ASP.NET MVC web application with Razor views
