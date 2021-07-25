@@ -1,10 +1,17 @@
+using AcademyCRM.BLL.Models;
+using AcademyCRM.BLL.Services;
+using AcademyCRM.DAL;
+using AcademyCRM.DAL.EF.Contexts;
+using AcademyCRM.DAL.EF.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 
-namespace SampleMVCWebApp
+namespace AcademyCRM.MVC
 {
     public class Startup
     {
@@ -18,7 +25,10 @@ namespace SampleMVCWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IStudentService, FakeStudentService>();
+            services.AddDbContext<StudentsContext>(options =>
+                options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=AcademyCrmDb;Trusted_Connection=True;"));
+            services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<IRepository<Student>, StudentsRepository>();
             services.AddControllersWithViews();
         }
 
