@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using SampleMVCWebApp.Models;
+﻿using AcademyCRM.BLL.Models;
+using AcademyCRM.BLL.Services;
+using System.Collections.Generic;
 
-namespace SampleMVCWebApp.Services
+namespace AcademyCRM.BLL.Tests
 {
     public class FakeStudentService : IStudentService
     {
