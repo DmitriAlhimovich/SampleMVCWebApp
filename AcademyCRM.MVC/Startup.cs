@@ -29,8 +29,12 @@ namespace AcademyCRM.MVC
         {
             services.AddDbContext<StudentsContext>(options =>
                 options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=AcademyCrmDb;Trusted_Connection=True;"));
-            services.AddScoped<IStudentService, StudentService>();
+            
             services.AddScoped<IRepository<Student>, StudentsRepository>();
+            services.AddScoped<IRepository<StudentGroup>, StudentGroupsRepository>();
+
+            services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<IStudentGroupService, StudentGroupService>();
 
             // Auto Mapper Configurations
             var mapperConfig = new MapperConfiguration(mc =>

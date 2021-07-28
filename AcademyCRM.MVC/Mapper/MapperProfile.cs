@@ -13,6 +13,9 @@ namespace AcademyCRM.MVC.Mapper
         public MappingProfile()
         {
             CreateMap<Student, StudentModel>().ReverseMap();
+            CreateMap<StudentGroup, StudentGroupModel>()
+                .ForMember(model => model.TeacherName, map => map.MapFrom(g => $"{g.Teacher.FirstName} {g.Teacher.LastName}"))
+                .ReverseMap();
         }
     }
 }

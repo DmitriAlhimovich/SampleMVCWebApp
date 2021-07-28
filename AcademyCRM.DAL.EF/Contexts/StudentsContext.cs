@@ -11,12 +11,20 @@ namespace AcademyCRM.DAL.EF.Contexts
     public class StudentsContext : DbContext
     {
         public DbSet<Student> Students { get; set; } = default!;
+        public DbSet<StudentGroup> StudentGroups { get; set; } = default!;
+
+        public DbSet<Teacher> Teachers { get; set; } = default!;
 
         public StudentsContext()
         {
             
         }
         public StudentsContext(DbContextOptions<StudentsContext> options) : base(options) { }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Seed();
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

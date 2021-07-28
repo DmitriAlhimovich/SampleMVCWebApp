@@ -1,0 +1,29 @@
+﻿@model IEnumerable<StudentGroupModel>
+@{
+    ViewData["Title"] = "Student Groups";
+
+}
+<h1>List of Students</h1>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Start Date</th>
+    </tr>
+
+    @foreach (var group in Model)
+    {
+<tr>
+    <td>@group.Title</td>
+    <td>@group.Status</td>
+    <td>@group.StartDate</td>
+    <td>@group.TeacherName</td>
+</tr>
+    }
+
+    <tr>
+        <th><div class="text-info">Total: @Model.Count()</div></th>
+    </tr>
+</table>

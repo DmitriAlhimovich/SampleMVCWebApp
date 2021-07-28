@@ -3,8 +3,8 @@ using AcademyCRM.BLL.Models;
 
 namespace AcademyCRM.BLL.Services
 {
-    public interface IStudentService
+    public interface IStudentGroupService
     {
-        IEnumerable<Student> GetAll();
+        IEnumerable<StudentGroup> GetAll();
     }
 }
