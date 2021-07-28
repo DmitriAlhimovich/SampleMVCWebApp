@@ -3,6 +3,8 @@ using AcademyCRM.BLL.Services;
 using AcademyCRM.DAL;
 using AcademyCRM.DAL.EF.Contexts;
 using AcademyCRM.DAL.EF.Repositories;
+using AcademyCRM.MVC.Mapper;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +31,16 @@ namespace AcademyCRM.MVC
                 options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=AcademyCrmDb;Trusted_Connection=True;"));
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<IRepository<Student>, StudentsRepository>();
+
+            // Auto Mapper Configurations
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddControllersWithViews();
         }
 

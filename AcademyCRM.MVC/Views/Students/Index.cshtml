@@ -1,4 +1,4 @@
-﻿@model StudentListModel
+﻿@model IEnumerable<StudentModel>
 @{
     ViewData["Title"] = "Students";
 
@@ -13,7 +13,7 @@
         <th>Start Date</th>
     </tr>
 
-    @foreach (var student in Model.Students)
+    @foreach (var student in Model)
     {
         <tr>
             <td>@student.FirstName</td>
@@ -23,6 +23,6 @@
     }
 
     <tr>
-        <th><div class="text-info">Total: @Model.Students.Count()</div></th>
+        <th><div class="text-info">Total: @Model.Count()</div></th>
     </tr>
 </table>
