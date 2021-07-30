@@ -10,11 +10,13 @@ namespace AcademyCRM.MVC.Controllers
     public class StudentsController : Controller
     {
         private readonly IStudentService _studentsService;
+        private readonly IStudentGroupService _groupService;
         private readonly IMapper _mapper;
 
-        public StudentsController(IStudentService studentService, IMapper mapper)
+        public StudentsController(IStudentService studentService, IStudentGroupService groupService, IMapper mapper)
         {
             _studentsService = studentService;
+            _groupService = groupService;
             _mapper = mapper;
         }
 
@@ -22,6 +24,16 @@ namespace AcademyCRM.MVC.Controllers
         {
             var students = _studentsService.GetAll();
             return View(_mapper.Map<IEnumerable<StudentModel>>(students));
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var student = _studentsService.GetById(id);
+
+            ViewBag.Groups = _mapper.Map<IEnumerable<StudentGroupModel>>(_groupService.GetAll());
+
+            return View(_mapper.Map<StudentModel>(student));
         }
     }
 }

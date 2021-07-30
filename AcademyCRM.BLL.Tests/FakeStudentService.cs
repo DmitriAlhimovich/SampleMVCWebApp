@@ -12,5 +12,10 @@ namespace AcademyCRM.BLL.Tests
                 new() {FirstName = "Ivan", LastName = "Petrov"},
                 new() {FirstName = "Oleg", LastName = "Antonov"}
             };
+
+        public Student GetById(int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

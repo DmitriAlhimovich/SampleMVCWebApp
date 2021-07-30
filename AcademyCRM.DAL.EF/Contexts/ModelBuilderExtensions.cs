@@ -12,26 +12,53 @@ namespace AcademyCRM.DAL.EF.Contexts
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
-            var group = new StudentGroup() {Title = "ASPNET_21_1"};
-            modelBuilder.Entity<StudentGroup>().HasData(group);
+            var teacher1 = new Teacher()
+            {
+                Id = 1,
+                FirstName = "Vadim",
+                LastName = "Korotkov",
+                LinkToProfile = "https://www.linkedin.com/feed/"
+            };
+            var teacher2 = new Teacher()
+            {
+                Id = 2,
+                FirstName = "Sergey",
+                LastName = "Gromov",
+                LinkToProfile = "https://www.linkedin.com/feed/"
+            };
+            modelBuilder.Entity<Teacher>().HasData(teacher1, teacher2);
+
+            var group1 = new StudentGroup()
+            {
+                Id = 1,
+                Title = "ASPNET_21_1",
+                TeacherId = teacher1.Id
+            };
+            var group2 = new StudentGroup()
+            {
+                Id = 2,
+                Title = "Java_23_4",
+                TeacherId = teacher1.Id
+            };
+            modelBuilder.Entity<StudentGroup>().HasData(group1, group2);
 
             modelBuilder.Entity<Student>().HasData(
                 new Student
                 {
-                    Id = 5,
+                    Id = 1,
                     FirstName = "Oleg",
                     LastName = "Fedorov",
-                    Group = group
+                    GroupId = group1.Id
                 },
                 new Student()
                 {
-                    Id = 6,
+                    Id = 2,
                     FirstName = "Andrey",
                     LastName = "Antonov",
-                    Group = group
+                    GroupId = group1.Id
                 }
             );
-            
+
         }
     }
 }

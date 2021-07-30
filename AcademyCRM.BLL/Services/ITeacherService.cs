@@ -3,9 +3,9 @@ using AcademyCRM.BLL.Models;
 
 namespace AcademyCRM.BLL.Services
 {
-    public interface IStudentService
+    public interface ITeacherService
     {
-        IEnumerable<Student> GetAll();
-        Student GetById(int id);
+        IEnumerable<Teacher> GetAll();
+        Teacher GetById(int id);
     }
 }

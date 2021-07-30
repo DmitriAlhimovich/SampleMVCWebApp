@@ -3,22 +3,20 @@
     ViewData["Title"] = "Students";
 
 }
-<h1>List of Students</h1>
+<h1>Students</h1>
 
 <table class="table table-bordered">
 
     <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Start Date</th>
+        <th>Name</th>
+        <th>Group</th>
     </tr>
 
-    @foreach (var student in Model)
+    @foreach (var student in Model.OrderBy(s => s.LastName))
     {
         <tr>
-            <td>@student.FirstName</td>
-            <td>@student.LastName</td>
-            <td>@student.StartDate</td>
+            <td><a asp-controller="Students" asp-action="Edit" asp-route-id="@student.Id">@student.LastName @student.FirstName</a></td>
+            <td><a asp-controller="StudentGroups" asp-action="Edit" asp-route-id="@student.GroupId">@student.Group.Title</a> (<i>@student.Group.Status</i>)</td>
         </tr>
     }
 

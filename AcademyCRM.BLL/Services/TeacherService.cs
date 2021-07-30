@@ -4,21 +4,21 @@ using AcademyCRM.DAL;
 
 namespace AcademyCRM.BLL.Services
 {
-    public class StudentGroupService : IStudentGroupService
+    public class TeacherService : ITeacherService
     {
-        private readonly IRepository<StudentGroup> _repository;
+        IRepository<Teacher> _repository;
 
-        public StudentGroupService(IRepository<StudentGroup> repository)
+        public TeacherService(IRepository<Teacher> repository)
         {
             _repository = repository;
         }
 
-        public IEnumerable<StudentGroup> GetAll()
+        public IEnumerable<Teacher> GetAll()
         {
             return _repository.GetAll();
         }
 
-        public StudentGroup GetById(int id)
+        public Teacher GetById(int id)
         {
             return _repository.Get(id);
         }

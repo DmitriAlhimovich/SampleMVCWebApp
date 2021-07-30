@@ -10,7 +10,8 @@ namespace AcademyCRM.MVC.Models
         public int Id { get; set; }
         public string Title { get; set; }
 
-        public string TeacherName { get; set; }
+        public int TeacherId { get; set; }
+        public TeacherModel Teacher { get; set; }
 
         public string StartDate { get; set; }
 

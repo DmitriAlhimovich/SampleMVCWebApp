@@ -6,5 +6,6 @@ namespace AcademyCRM.BLL.Services
     public interface IStudentGroupService
     {
         IEnumerable<StudentGroup> GetAll();
+        StudentGroup GetById(int id);
     }
 }

@@ -13,4 +13,12 @@
     <ProjectReference Include="..\AcademyCRM.DAL.EF\AcademyCRM.DAL.EF.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Students\Edit.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Students\Edit.cshtml" />
+  </ItemGroup>
+
 </Project>
