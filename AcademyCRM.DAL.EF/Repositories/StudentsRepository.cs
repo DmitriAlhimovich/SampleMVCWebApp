@@ -12,9 +12,9 @@ namespace AcademyCRM.DAL.EF.Repositories
 {
     public class StudentsRepository : IRepository<Student>
     {
-        private readonly StudentsContext _context;
+        private readonly AcademyContext _context;
 
-        public StudentsRepository(StudentsContext context)
+        public StudentsRepository(AcademyContext context)
         {
             _context = context;
         }
@@ -41,7 +41,9 @@ namespace AcademyCRM.DAL.EF.Repositories
 
         public IEnumerable<Student> GetAll()
         {
-            return _context.Students.ToList();
+            return _context.Students
+                .Include(s => s.Group)
+                .ToList();
         }
 
         public void Update(Student item)

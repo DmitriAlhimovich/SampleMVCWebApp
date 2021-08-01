@@ -2,12 +2,13 @@
 
 namespace AcademyCRM.BLL.Models
 {
-    public class Student
+    public class Student : Person
     {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime BirthDate { get; set; }
         public DateTime StartDate { get; set; }
+
+        public StudentType Type { get; set; }
+
+        public int GroupId { get; set; }
+        public StudentGroup Group { get; set; }
     }
 }

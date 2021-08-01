@@ -27,10 +27,16 @@ namespace AcademyCRM.MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<StudentsContext>(options =>
+            services.AddDbContext<AcademyContext>(options =>
                 options.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=AcademyCrmDb;Trusted_Connection=True;"));
-            services.AddScoped<IStudentService, StudentService>();
+
+            services.AddScoped<IRepository<Teacher>, TeachersRepository>();
             services.AddScoped<IRepository<Student>, StudentsRepository>();
+            services.AddScoped<IRepository<StudentGroup>, StudentGroupsRepository>();
+
+            services.AddScoped<ITeacherService, TeacherService>();
+            services.AddScoped<IStudentService, StudentService>();
+            services.AddScoped<IStudentGroupService, StudentGroupService>();
 
             // Auto Mapper Configurations
             var mapperConfig = new MapperConfiguration(mc =>
