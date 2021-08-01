@@ -22,5 +22,10 @@ namespace AcademyCRM.BLL.Services
         {
             return _repository.Get(id);
         }
+
+        public void Update(StudentGroup group)
+        {
+            _repository.Update(group);
+        }
     }
 }

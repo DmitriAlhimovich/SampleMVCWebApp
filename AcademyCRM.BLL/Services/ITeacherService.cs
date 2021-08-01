@@ -7,5 +7,6 @@ namespace AcademyCRM.BLL.Services
     {
         IEnumerable<Teacher> GetAll();
         Teacher GetById(int id);
+        void Update(Teacher teacher);
     }
 }

@@ -19,7 +19,6 @@ namespace AcademyCRM.DAL.EF.Repositories
             _context = context;
         }
 
-
         public void Create(Teacher item)
         {
             _context.Teachers.Add(item);
@@ -47,6 +46,7 @@ namespace AcademyCRM.DAL.EF.Repositories
         public void Update(Teacher item)
         {
             _context.Entry(item).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }

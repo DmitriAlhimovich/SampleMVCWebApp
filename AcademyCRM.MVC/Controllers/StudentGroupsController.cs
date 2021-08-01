@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using AcademyCRM.BLL.Models;
 using AcademyCRM.BLL.Services;
 using AcademyCRM.MVC.Models;
 using AutoMapper;
@@ -33,6 +34,14 @@ namespace AcademyCRM.MVC.Controllers
             ViewBag.Teachers = _mapper.Map<IEnumerable<TeacherModel>>(_teacherService.GetAll());
 
             return View(_mapper.Map<StudentGroupModel>(group));
+        }
+
+        [HttpPost]
+        public IActionResult Edit(StudentGroupModel groupModel)
+        {
+            _groupService.Update(_mapper.Map<StudentGroup>(groupModel));
+
+            return RedirectToAction("Index");
         }
     }
 }

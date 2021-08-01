@@ -17,5 +17,10 @@ namespace AcademyCRM.BLL.Tests
         {
             throw new System.NotImplementedException();
         }
+
+        public void UpdateStudent(Student student)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

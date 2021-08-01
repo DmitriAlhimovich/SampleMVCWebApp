@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using AcademyCRM.BLL.Models;
 using AcademyCRM.BLL.Services;
 using AcademyCRM.MVC.Models;
 using AutoMapper;
@@ -29,6 +30,14 @@ namespace AcademyCRM.MVC.Controllers
             var teacher = _teacherService.GetById(id);
 
             return View(_mapper.Map<TeacherModel>(teacher));
+        }
+
+        [HttpPost]
+        public IActionResult Edit(TeacherModel teacherModel)
+        {
+            _teacherService.Update(_mapper.Map<Teacher>(teacherModel));
+
+            return RedirectToAction("Index");
         }
     }
 }

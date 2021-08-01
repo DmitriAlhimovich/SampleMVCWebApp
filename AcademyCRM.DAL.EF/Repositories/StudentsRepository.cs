@@ -34,14 +34,14 @@ namespace AcademyCRM.DAL.EF.Repositories
 
         public IEnumerable<Student> Find(Func<Student, bool> predicate)
         {
-            return _context.Students.Where(predicate).ToList();
+            return _context.Students.AsNoTracking().Where(predicate).ToList();
         }
 
         public Student Get(int id) => _context.Students.Find(id);
 
         public IEnumerable<Student> GetAll()
         {
-            return _context.Students
+            return _context.Students.AsNoTracking()
                 .Include(s => s.Group)
                 .ToList();
         }
@@ -49,6 +49,7 @@ namespace AcademyCRM.DAL.EF.Repositories
         public void Update(Student item)
         {
             _context.Entry(item).State = EntityState.Modified;
+            _context.SaveChanges();
         }
     }
 }

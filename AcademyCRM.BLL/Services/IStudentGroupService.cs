@@ -7,5 +7,6 @@ namespace AcademyCRM.BLL.Services
     {
         IEnumerable<StudentGroup> GetAll();
         StudentGroup GetById(int id);
+        void Update(StudentGroup group);
     }
 }
